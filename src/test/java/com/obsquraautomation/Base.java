@@ -12,10 +12,17 @@ public class Base {
 		driver.get("https://selenium.obsqurazone.com/simple-form-demo.php");
 	}
 	
+	public void browserCloseorQuit()
+	{
+		//driver.close(); //close the browser
+		driver.quit();
+	}
+	
 	public static void main(String args[])
 	{
 		Base base = new Base();
 		base.initialiseBrowser();
+		base.browserCloseorQuit();
 	}
 	
 
