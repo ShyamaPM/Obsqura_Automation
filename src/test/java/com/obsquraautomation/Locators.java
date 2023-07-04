@@ -109,6 +109,61 @@ public class Locators extends Base
 		driver.findElement(By.xpath("//button[@id='button-one' or text()='Show Message']"));
 		driver.findElement(By.xpath("//a[@class='navbar-brand']//child::img[@alt='logo']"));
 		driver.findElement(By.xpath("//button[@id='button-one']//parent::form"));
+		
+		driver.findElement(By.xpath("//button[@id='button-one']//following::button[@id='button-two']"));
+		driver.findElement(By.xpath("//button[@id='button-one']//preceding::label[@for='inputEmail4']"));
+		driver.findElement(By.xpath("//button[@id='button-one']//ancestor::div[@class='container page']"));
+		driver.findElement(By.xpath("//form[@method='POST']//descendant::div[@id='message-one']"));
+		driver.findElement(By.xpath("//label[@for='inputEmail4']//following-sibling::input"));
+		driver.findElement(By.xpath("(//form[@method='POST'])[1]")); //indexing
+	}
+	
+	public void followingSample()
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("//input[@id='button-two']//following::div[@class='copyright']"));
+		driver.findElement(By.xpath("//input[@id='check-box-one']//following::div[@class='container']"));
+		driver.findElement(By.xpath("//input[@id='gridCheck']//following::div[@class='my-2']"));
+		driver.findElement(By.xpath("//input[@class='check-box-list']//following::div[@class='container']"));
+	}
+	
+	public void precedingSample()
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("//input[@class='check-box-list']//preceding::div[@class='header-top']"));
+		driver.findElement(By.xpath("//input[@value='Select All']//preceding::div[@id='message-one']"));
+		driver.findElement(By.xpath("//input[@id='check-box-one']//preceding::div[@id='message-one']"));
+		driver.navigate().to("https://selenium.obsqurazone.com/radio-button-demo.php");
+		driver.findElement(By.xpath("//button[@id='button-one']//preceding::div[@class='card']"));
+	}
+	
+	public void ancestorSample()
+	{
+		driver.findElement(By.xpath("//button[@id='button-one']//ancestor::div[@class='container page']"));
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("//input[@id='button-two']//ancestor::div[@class='example my-3']"));
+		driver.findElement(By.xpath("//input[@class='check-box-list']//ancestor::div[@class='example my-3']"));
+		driver.findElement(By.xpath("//input[@id='check-box-three']//ancestor::div[@class='card-body']"));
+	}
+	
+	public void descendantSample()
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("//div[starts-with(@class,'example')]//descendant::input[@id='gridCheck']"));
+		driver.navigate().to("https://selenium.obsqurazone.com/radio-button-demo.php");
+		driver.findElement(By.xpath("//div[@class='card-body']//descendant::input[@id='inlineRadio1']"));
+		driver.findElement(By.xpath("//div[contains(@class,'-check-inline')]//descendant::label[@for='inlineRadio1']"));
+		driver.findElement(By.xpath("//div[@class='form-group']//descendant::input[@id='inlineRadio2']"));
+		driver.findElement(By.xpath("//div[@class='form-group']//descendant::label[text()='Female']"));
+	}
+	
+	public void followingSibling()
+	{
+		driver.findElement(By.xpath("//label[@for='inputEmail4']//following-sibling::input"));
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("//input[@id='gridCheck']//following-sibling::label"));
+		driver.findElement(By.xpath("//input[@id='check-box-one']//following-sibling::label"));
+		driver.findElement(By.xpath("//input[@id='check-box-two']//following-sibling::label"));
 	}
 	
 	public void containsSample()
@@ -145,26 +200,34 @@ public class Locators extends Base
 	public void orAndSample()
 	{
 		driver.findElement(By.xpath("//input[@id='value-a' or @type='text']"));
-		System.out.println("1");
 		driver.findElement(By.xpath("//div[@id='message-one' or @class='my-2']"));
-		System.out.println("2");
-		driver.findElement(By.xpath("//input[@id='gridCheck' and @class='form-check-input']"));
-		System.out.println("3");
 		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
-		System.out.println("4");
+		driver.findElement(By.xpath("//input[@id='gridCheck' and @class='form-check-input']"));
 		driver.findElement(By.xpath("//input[@class='check-box-list' and @id='check-box-one']"));
-		System.out.println("5");
 	}
 	
 	public void childParentSample()
 	{
 		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
-		System.out.println("6");
 		driver.findElement(By.xpath("//div[@class='form-check']//child::input[@id='gridCheck']"));
-		System.out.println("7");
 		driver.findElement(By.xpath("//div[@class='form-check']//child::input[@id='check-box-one']"));
-		System.out.println("8");
+		driver.navigate().to("https://selenium.obsqurazone.com/radio-button-demo.php");
+		driver.findElement(By.xpath("//div[@class='form-group']//child::label[@class='form-check-label']"));
+		driver.findElement(By.xpath("//input[@id='inlineRadio2']//parent::div"));
+		driver.findElement(By.xpath("//label[text()='Female']//parent::div[@class='form-check form-check-inline']"));
+		driver.findElement(By.xpath("//input[@id='inlineRadio23']//parent::div[@class='form-check form-check-inline']"));
 	}
+	
+	public void indexSample()
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/check-box-demo.php");
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
+		driver.findElement(By.xpath("(//input[@class='check-box-list'])[2]"));
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[4]"));
+		driver.findElement(By.xpath("(//label[@class='form-check-label'])[1]"));
+		
+	}
+	
 	public static void main(String[] args) 
 	{	
 		Locators locators = new Locators();
@@ -179,8 +242,14 @@ public class Locators extends Base
 		//locators.containsSample();
 		//locators.textSample();
 		//locators.startwithSample();
-		locators.orAndSample();
-		locators.childParentSample();
+		//locators.orAndSample();
+		//locators.childParentSample();
+		//locators.followingSample();
+		//locators.precedingSample();
+		//locators.ancestorSample();
+		//locators.descendantSample();
+		//locators.followingSibling();
+		locators.indexSample();
 		locators.browserCloseorQuit();
 
 	}
